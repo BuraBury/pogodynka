@@ -1,6 +1,5 @@
 package com.burabury.weather.forecastSources.openweather.model;
 
-import com.burabury.weather.forecastSources.openweather.model.OpenWeatherCurrent;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;

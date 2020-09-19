@@ -9,7 +9,8 @@ import java.time.LocalDate;
 
 public class OpenWeather {
 
-    private final static String URI_PATTERN = "https://api.openweathermap.org/data/2.5/onecall?lat=%f&lon=%f&exclude=minutely,hourly&units=metric&appid=%s";
+    private final static String URI_PATTERN = "https://api.openweathermap.org/data/2.5/" +
+            "onecall?lat=%f&lon=%f&exclude=minutely,hourly&units=metric&appid=%s";
     private final static ObjectMapper mapper = new ObjectMapper();
 
     private final String key;
@@ -18,7 +19,7 @@ public class OpenWeather {
         this.key = key;
     }
 
-    public String getForecast(double lat, double lon, LocalDate date) {
+    public String getForecast(double lat, double lon) {
         try {
             String uri = String.format(URI_PATTERN, lat, lon, key);
             String result = Request.Get(uri)
