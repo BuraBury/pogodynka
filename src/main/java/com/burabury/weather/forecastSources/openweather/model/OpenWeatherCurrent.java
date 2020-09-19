@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenWeatherCurrent {
-    double temp;
-    double pressure;
-    double humidity;
+
+    private double temp;
+    private double pressure;
+    private double humidity;
     @JsonProperty("wind_speed") //poprawianie nazwy
-    double windSpeed;
+    private double windSpeed;
     @JsonProperty("wind_deg")
     double windDegree;
 
@@ -66,13 +67,12 @@ public class OpenWeatherCurrent {
 
     @Override
     public String toString() {
-        return "\ncurrent weather: " +
+        return "Current weather: " +
                 "\ntemp=" + temp +
                 ",\npressure=" + pressure +
                 ",\nhumidity=" + humidity +
                 ",\nwind_speed=" + windSpeed +
-                ",\nwind_deg=" + windDegree +
-                '}';
+                ",\nwind_deg=" + windDegree;
     }
 }
 

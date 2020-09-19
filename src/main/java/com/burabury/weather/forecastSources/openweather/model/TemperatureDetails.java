@@ -65,13 +65,12 @@ public class TemperatureDetails {
 
     @Override
     public String toString() {
-        return "TemperatureDetails{" +
+        return "Temperatures: " +
                 "\nday=" + day +
                 ",\nnight=" + night +
                 ",\nmin=" + min +
                 ",\nmax=" + max +
                 ",\neve=" + eve +
-                ",\nmorn=" + morn +
-                '}';
+                ",\nmorn=" + morn + "\n";
     }
 }

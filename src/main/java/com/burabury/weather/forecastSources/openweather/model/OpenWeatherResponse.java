@@ -55,6 +55,6 @@ public class OpenWeatherResponse {
 
     @Override
     public String toString() {
-        return String.format("OpenWeatherForcastResponse{lat=%s, lon=%s%s%s}", lat, lon, current, daily);
+        return String.format("OpenWeatherForcastResponse lat=%s, lon=%s%s%s", lat, lon, current, daily);
     }
 }

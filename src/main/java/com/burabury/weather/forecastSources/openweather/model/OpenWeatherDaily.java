@@ -2,35 +2,32 @@ package com.burabury.weather.forecastSources.openweather.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
-import java.util.Date;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OpenWeatherDaily {
+public class OpenWeatherDaily implements DateConverter{
 
     @JsonProperty("temp")
     private TemperatureDetails temperatureDetails;
     private double pressure;
     private double humidity;
     @JsonProperty("dt")
-    private long date;
+    private long dateTime;
     @JsonProperty("wind_speed") //poprawianie nazwy
     private double windSpeed;
     @JsonProperty("wind_deg")
     double windDegree;
 
-    public OpenWeatherDaily() throws JsonProcessingException {
+
+    public OpenWeatherDaily() {
     }
 
-    public Date getDate() {
-
-        Date resultDate = new Date(date);
-        return resultDate;
+    public String getDateTime() {
+        return convertDate(dateTime);
     }
 
-    public void setDate(long date) {
-        this.date = date;
+    public void setDateTime(long dateTime) {
+        this.dateTime = dateTime;
     }
 
     public TemperatureDetails getTemperatureDetails() {
@@ -75,14 +72,13 @@ public class OpenWeatherDaily {
 
 
     public String toString() {
-        return "\n\nOpenWeatherDaily{\n"
-                + date + "\n"
-                + temperatureDetails +
-                ",\npressure=" + pressure +
+        return "\nDaily weather" +
+                "\ndateTime=" + getDateTime() +
+                "\n" + getTemperatureDetails() +
+                "\npressure=" + pressure +
                 ",\nhumidity=" + humidity +
                 ",\nwindSpeed=" + windSpeed +
-                ",\nwindDegree=" + windDegree +
-                '}' + "\n";
+                ",\nwindDegree=" + windDegree + "\n";
     }
 }
 

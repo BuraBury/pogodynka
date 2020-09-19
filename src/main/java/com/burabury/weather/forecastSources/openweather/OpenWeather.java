@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.client.fluent.Request;
 
 import java.io.IOException;
+import java.net.URI;
 import java.time.LocalDate;
 
 public class OpenWeather {
@@ -19,18 +20,31 @@ public class OpenWeather {
         this.key = key;
     }
 
-    public String getForecast(double lat, double lon, LocalDate date) {
+    public String getCurrentForecast(double lat, double lon) {
+
+        LocalDate.now();
         try {
             String uri = String.format(URI_PATTERN, lat, lon, key);
             String result = Request.Get(uri)
                     .execute()
                     .returnContent()
                     .asString();
-            return String.valueOf(mapper.readValue(result, OpenWeatherResponse.class));
+            return String.valueOf(mapper.readValue(result, OpenWeatherResponse.class).getCurrent());
         } catch (IOException e) {
             return e.getMessage();
         }
+    }
 
-
+    public String getDailyForecastForWeek(double lat, double lon, LocalDate date) {
+        try {
+            String uri = String.format(URI_PATTERN, lat, lon, key);
+            String result = Request.Get(uri)
+                    .execute()
+                    .returnContent()
+                    .asString();
+            return String.valueOf(mapper.readValue(result, OpenWeatherResponse.class).getDaily());
+        } catch (IOException e) {
+            return e.getMessage();
+        }
     }
 }
