@@ -12,8 +12,6 @@ public class OpenWeatherResponse {
     private OpenWeatherCurrent current;
     private List<OpenWeatherDaily> daily;
 
-
-
     public OpenWeatherResponse(double lat, double lon, OpenWeatherCurrent current) {
         this.lat = lat;
         this.lon = lon;
