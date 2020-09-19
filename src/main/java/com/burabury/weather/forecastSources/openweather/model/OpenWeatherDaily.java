@@ -2,6 +2,7 @@ package com.burabury.weather.forecastSources.openweather.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenWeatherDaily {
@@ -17,7 +18,7 @@ public class OpenWeatherDaily {
     @JsonProperty("wind_deg")
     double windDegree;
 
-    public OpenWeatherDaily() {
+    public OpenWeatherDaily() throws JsonProcessingException {
     }
 
     public TemperatureDetails getTemperatureDetails() {
@@ -60,15 +61,15 @@ public class OpenWeatherDaily {
         this.windDegree = windDegree;
     }
 
-    @Override
+
     public String toString() {
-        return "OpenWeatherDaily{" +
-                "\ntemp=" + temperatureDetails +
+        return "\n\nOpenWeatherDaily{"
+                + temperatureDetails +
                 ",\npressure=" + pressure +
                 ",\nhumidity=" + humidity +
                 ",\nwindSpeed=" + windSpeed +
                 ",\nwindDegree=" + windDegree +
-                '}';
+                '}' + "\n";
     }
 }
 

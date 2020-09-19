@@ -10,8 +10,9 @@ public class OpenWeatherResponse {
     private double lat;
     private double lon;
     private OpenWeatherCurrent current;
+    private List<OpenWeatherDaily> daily;
 
-    private List<OpenWeatherDaily> dailyForecast;
+
 
     public OpenWeatherResponse(double lat, double lon, OpenWeatherCurrent current) {
         this.lat = lat;
@@ -22,12 +23,12 @@ public class OpenWeatherResponse {
     public OpenWeatherResponse() {
     }
 
-    public List<OpenWeatherDaily> getDailyForecast() {
-        return dailyForecast;
+    public List<OpenWeatherDaily> getDaily() {
+        return daily;
     }
 
-    public void setDailyForecast(List<OpenWeatherDaily> dailyForecast) {
-        this.dailyForecast = dailyForecast;
+    public void setDaily(List<OpenWeatherDaily> daily) {
+        this.daily = daily;
     }
 
     public double getLat() {
@@ -56,10 +57,6 @@ public class OpenWeatherResponse {
 
     @Override
     public String toString() {
-        return "OpenWeatherForcastResponse{" +
-                "lat=" + lat +
-                ", lon=" + lon +
-                current +
-                '}';
+        return String.format("OpenWeatherForcastResponse{lat=%s, lon=%s%s%s}", lat, lon, current, daily);
     }
 }

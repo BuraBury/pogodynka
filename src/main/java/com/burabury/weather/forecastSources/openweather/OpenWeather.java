@@ -19,7 +19,7 @@ public class OpenWeather {
         this.key = key;
     }
 
-    public String getForecast(double lat, double lon) {
+    public String getForecast(double lat, double lon, LocalDate date) {
         try {
             String uri = String.format(URI_PATTERN, lat, lon, key);
             String result = Request.Get(uri)
