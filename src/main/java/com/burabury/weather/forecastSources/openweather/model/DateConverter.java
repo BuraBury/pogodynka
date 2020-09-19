@@ -7,7 +7,7 @@ public interface DateConverter {
 
     default String convertDate(long dateToConvert) {
         Date date = new Date(dateToConvert);
-        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
         String dateText = df2.format(date);
 
         return dateText;

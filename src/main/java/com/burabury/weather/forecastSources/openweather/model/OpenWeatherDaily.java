@@ -22,8 +22,8 @@ public class OpenWeatherDaily implements DateConverter{
     public OpenWeatherDaily() {
     }
 
-    public String getDateTime() {
-        return convertDate(dateTime);
+    public long getDateTime() {
+        return dateTime;
     }
 
     public void setDateTime(long dateTime) {
@@ -73,7 +73,7 @@ public class OpenWeatherDaily implements DateConverter{
 
     public String toString() {
         return "\nDaily weather" +
-                "\ndateTime=" + getDateTime() +
+                "\ndateTime=" + convertDate(getDateTime()) +
                 "\n" + getTemperatureDetails() +
                 "\npressure=" + pressure +
                 ",\nhumidity=" + humidity +
