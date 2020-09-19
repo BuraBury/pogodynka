@@ -1,26 +1,75 @@
 package com.burabury.weather.forecastSources.openweather.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenWeatherDaily {
 
-    List<Object> dailyWeather = new ArrayList();
-    long dt;
+    @JsonProperty("temp")
+    private TemperatureDetails temperatureDetails;
+    private double pressure;
+    private double humidity;
+
+    @JsonProperty("wind_speed") //poprawianie nazwy
+            double windSpeed;
+
+    @JsonProperty("wind_deg")
+    double windDegree;
 
     public OpenWeatherDaily() {
     }
 
-    public List<Object> getDailyWeather() {
-        return dailyWeather;
+    public TemperatureDetails getTemperatureDetails() {
+        return temperatureDetails;
     }
 
-    public void setDailyWeather(List<Object> dailyWeather) {
-        this.dailyWeather = dailyWeather;
+    public void setTemperatureDetails(TemperatureDetails temperatureDetails) {
+        this.temperatureDetails = temperatureDetails;
     }
 
+    public double getPressure() {
+        return pressure;
+    }
 
+    public void setPressure(double pressure) {
+        this.pressure = pressure;
+    }
+
+    public double getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(double humidity) {
+        this.humidity = humidity;
+    }
+
+    public double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(double windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    public double getWindDegree() {
+        return windDegree;
+    }
+
+    public void setWindDegree(double windDegree) {
+        this.windDegree = windDegree;
+    }
+
+    @Override
+    public String toString() {
+        return "OpenWeatherDaily{" +
+                "\ntemp=" + temperatureDetails +
+                ",\npressure=" + pressure +
+                ",\nhumidity=" + humidity +
+                ",\nwindSpeed=" + windSpeed +
+                ",\nwindDegree=" + windDegree +
+                '}';
+    }
 }
+
+

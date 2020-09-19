@@ -3,12 +3,16 @@ package com.burabury.weather.forecastSources.openweather.model;
 import com.burabury.weather.forecastSources.openweather.model.OpenWeatherCurrent;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenWeatherResponse {
 
     private double lat;
     private double lon;
     private OpenWeatherCurrent current;
+
+    private List<OpenWeatherDaily> dailyForecast;
 
     public OpenWeatherResponse(double lat, double lon, OpenWeatherCurrent current) {
         this.lat = lat;
@@ -17,6 +21,14 @@ public class OpenWeatherResponse {
     }
 
     public OpenWeatherResponse() {
+    }
+
+    public List<OpenWeatherDaily> getDailyForecast() {
+        return dailyForecast;
+    }
+
+    public void setDailyForecast(List<OpenWeatherDaily> dailyForecast) {
+        this.dailyForecast = dailyForecast;
     }
 
     public double getLat() {
