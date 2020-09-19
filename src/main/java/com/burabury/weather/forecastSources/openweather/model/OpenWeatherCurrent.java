@@ -8,10 +8,8 @@ public class OpenWeatherCurrent {
     double temp;
     double pressure;
     double humidity;
-
     @JsonProperty("wind_speed") //poprawianie nazwy
     double windSpeed;
-
     @JsonProperty("wind_deg")
     double windDegree;
 

@@ -13,13 +13,10 @@ public class OpenWeatherDaily {
     private TemperatureDetails temperatureDetails;
     private double pressure;
     private double humidity;
-
     @JsonProperty("dt")
     private long date;
-
     @JsonProperty("wind_speed") //poprawianie nazwy
-            double windSpeed;
-
+    private double windSpeed;
     @JsonProperty("wind_deg")
     double windDegree;
 
