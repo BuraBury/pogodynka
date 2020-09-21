@@ -1,26 +1,23 @@
-package com.burabury.weather.forecastSources.openweather.model;
+package weatherApp.openWeather.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OpenWeatherDaily implements DateConverter{
-
-    @JsonProperty("temp")
-    private TemperatureDetails temperatureDetails;
-    private double pressure;
-    private double humidity;
+public class OpenWeatherDailyForecast {
     @JsonProperty("dt")
     private long dateTime;
-    @JsonProperty("wind_speed") //poprawianie nazwy
+    @JsonProperty("temp")
+    private TemperatureDetails temperatureDetails;
+    private int pressure;
+    private double humidity;
+
+    @JsonProperty("wind_speed")
     private double windSpeed;
+
     @JsonProperty("wind_deg")
-    double windDegree;
-
-
-    public OpenWeatherDaily() {
-    }
+    private int windDegree;
 
     public long getDateTime() {
         return dateTime;
@@ -38,11 +35,16 @@ public class OpenWeatherDaily implements DateConverter{
         this.temperatureDetails = temperatureDetails;
     }
 
-    public double getPressure() {
+    @JsonIgnore
+    public double getTemp() {
+        return temperatureDetails.getDay();
+    }
+
+    public int getPressure() {
         return pressure;
     }
 
-    public void setPressure(double pressure) {
+    public void setPressure(int pressure) {
         this.pressure = pressure;
     }
 
@@ -62,24 +64,25 @@ public class OpenWeatherDaily implements DateConverter{
         this.windSpeed = windSpeed;
     }
 
-    public double getWindDegree() {
+    public int getWindDegree() {
         return windDegree;
     }
 
-    public void setWindDegree(double windDegree) {
+    public void setWindDegree(int windDegree) {
         this.windDegree = windDegree;
     }
 
-
+    @Override
     public String toString() {
-        return "\nDaily weather" +
-                "\ndateTime=" + convertDate(getDateTime()) +
-                "\n" + getTemperatureDetails() +
-                "\npressure=" + pressure +
-                ",\nhumidity=" + humidity +
-                ",\nwindSpeed=" + windSpeed +
-                ",\nwindDegree=" + windDegree + "\n";
+        return "OpenWeatherDailyForecast{" +
+                "dateTime=" + dateTime +
+                ", temp=" + getTemp() +
+                ", pressure=" + pressure +
+                ", humidity=" + humidity +
+                ", windSpeed=" + windSpeed +
+                ", windDegree=" + windDegree +
+                '}';
     }
+
+
 }
-
-

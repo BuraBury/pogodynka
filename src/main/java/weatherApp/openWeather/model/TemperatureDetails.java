@@ -1,19 +1,12 @@
-package com.burabury.weather.forecastSources.openweather.model;
+package weatherApp.openWeather.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class TemperatureDetails {
-
     private double day;
     private double night;
     private double min;
     private double max;
     private double eve;
     private double morn;
-
-    public TemperatureDetails() {
-    }
 
     public double getDay() {
         return day;
@@ -65,12 +58,13 @@ public class TemperatureDetails {
 
     @Override
     public String toString() {
-        return "Temperatures: " +
-                "\nday=" + day +
-                ",\nnight=" + night +
-                ",\nmin=" + min +
-                ",\nmax=" + max +
-                ",\neve=" + eve +
-                ",\nmorn=" + morn + "\n";
+        return "TemperatureDetails{" +
+                "day=" + day +
+                ", night=" + night +
+                ", min=" + min +
+                ", max=" + max +
+                ", eve=" + eve +
+                ", morn=" + morn +
+                '}';
     }
 }
