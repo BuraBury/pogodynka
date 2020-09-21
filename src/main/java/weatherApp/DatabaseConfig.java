@@ -19,7 +19,7 @@ public class DatabaseConfig {
 
         settings.put(Environment.URL, "jdbc:mysql://localhost:3306/EMP?serverTimezone=EST");
         settings.put(Environment.USER, "root");
-        settings.put(Environment.PASS, "paciukalak328");
+        settings.put(Environment.PASS, "***");
         settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         settings.put(Environment.HBM2DDL_AUTO, "create-drop");
