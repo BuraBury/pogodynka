@@ -1,4 +1,4 @@
-package weatherApp.forecastcache;
+package weatherApp.DAO;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

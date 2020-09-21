@@ -1,7 +1,8 @@
-package weatherApp.openWeather;
+package weatherApp.Repositories;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import weatherApp.model.WeatherForecast;
+import weatherApp.openWeather.WeatherForecastMapper;
 import weatherApp.openWeather.model.Coords;
 import weatherApp.openWeather.model.OpenWeatherDailyForecast;
 import weatherApp.openWeather.model.OpenWeatherResponse;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 
-public class OpenWeather {
+public class OpenWeatherRepository {
 
     private final static String URI_PATTERN = "https://api.openweathermap.org/data/2.5/onecall?lat=%f&lon=%f&exclude=minutely,hourly&units=metric&appid=%s";
     private final static String CITY_PATTERN = "https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s";
@@ -22,7 +23,7 @@ public class OpenWeather {
 
     private final String key;
 
-    public OpenWeather(String key) {
+    public OpenWeatherRepository(String key) {
         this.key = key;
     }
 

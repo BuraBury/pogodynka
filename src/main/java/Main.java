@@ -1,5 +1,5 @@
-import weatherApp.forecastcache.WeatherForecastDao;
-import weatherApp.openWeather.OpenWeather;
+import weatherApp.DAO.WeatherForecastDao;
+import weatherApp.Repositories.OpenWeatherRepository;
 import org.apache.commons.cli.*;
 
 
@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
         String key = Files.readAllLines(Paths.get("key.txt")).get(0).trim();
-        OpenWeather forecastSource = new OpenWeather(key);
+        OpenWeatherRepository forecastSource = new OpenWeatherRepository(key);
 
         callWithArbitraryArguments(forecastSource);
 
@@ -26,7 +26,7 @@ public class Main {
         System.out.println(dao.listForecast());
     }
 
-    private static void callWithPassedArguments(OpenWeather forecastSource, String[] args) {
+    private static void callWithPassedArguments(OpenWeatherRepository forecastSource, String[] args) {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
 
         System.out.println(Arrays.toString(args));
@@ -54,7 +54,7 @@ public class Main {
         }
     }
 
-    private static void callWithArbitraryArguments(OpenWeather forecastSource) {
+    private static void callWithArbitraryArguments(OpenWeatherRepository forecastSource) {
         LocalDate fiveDaysForward = LocalDate.now().plusDays(5);
 
         System.out.println(forecastSource.getForecast(50.041187, 21.999121, fiveDaysForward));
