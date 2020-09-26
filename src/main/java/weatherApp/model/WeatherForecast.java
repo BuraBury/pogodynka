@@ -9,8 +9,9 @@ import javax.persistence.Id;
 public class WeatherForecast {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private double pressure;
     private double temperature;
     private double humidity;

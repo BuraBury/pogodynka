@@ -3,5 +3,4 @@
 *.iml
 target/
 key.txt
-pass.txt
 test.db.mv.db

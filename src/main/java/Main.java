@@ -1,5 +1,9 @@
+import weatherApp.DAO.CachedForecastDao;
 import weatherApp.DAO.WeatherForecastDao;
-import weatherApp.Repositories.OpenWeatherRepository;
+import weatherApp.model.CachedForecast;
+import weatherApp.model.WeatherForecast;
+import weatherApp.model.WeatherSource;
+import weatherApp.openWeather.OpenWeather;
 import org.apache.commons.cli.*;
 
 
@@ -7,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -14,19 +19,18 @@ import java.util.Objects;
 public class Main {
     public static void main(String[] args) throws IOException {
         String key = Files.readAllLines(Paths.get("key.txt")).get(0).trim();
-        OpenWeatherRepository forecastSource = new OpenWeatherRepository(key);
+        LocalDate tomorrow = LocalDate.now().plusDays(1);
+        OpenWeather forecastSource = new OpenWeather(key);
 
-        callWithArbitraryArguments(forecastSource);
+        WeatherForecast forecastForCity1 = forecastSource.getForecast("Rzeszow");
+        WeatherForecast forecastForCity2 = forecastSource.getForecast("Rzeszow");
 
-        callWithPassedArguments(forecastSource, args);
+        System.out.println(forecastForCity1);
+        System.out.println(forecastForCity2);
 
-        WeatherForecastDao dao = new WeatherForecastDao();
-        dao.saveForecast(forecastSource.getForecast("Rzeszów"));
-
-        System.out.println(dao.listForecast());
     }
 
-    private static void callWithPassedArguments(OpenWeatherRepository forecastSource, String[] args) {
+    private static void callWithPassedArguments(OpenWeather forecastSource, String[] args) {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
 
         System.out.println(Arrays.toString(args));
@@ -54,7 +58,7 @@ public class Main {
         }
     }
 
-    private static void callWithArbitraryArguments(OpenWeatherRepository forecastSource) {
+    private static void callWithArbitraryArguments(OpenWeather forecastSource) {
         LocalDate fiveDaysForward = LocalDate.now().plusDays(5);
 
         System.out.println(forecastSource.getForecast(50.041187, 21.999121, fiveDaysForward));
